@@ -1,10 +1,10 @@
-FROM gradle:jdk17 as builder
+FROM gradle:7.5.1-jdk17-alpine as builder
 RUN mkdir /app
 COPY --chown=gradle:gradle . /app
 
 WORKDIR /app
 USER root
-RUN gradle clean build
+RUN gradle build
 
 FROM openjdk:17
 ARG JAR_FILE=build/libs/*.jar
