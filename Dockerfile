@@ -1,4 +1,4 @@
-FROM gradle:7.5.1-jdk17-alpine as builder
+FROM gradle:9.1.0-jdk17-alpine as builder
 RUN mkdir /app
 COPY --chown=gradle:gradle . /app
 
@@ -6,7 +6,7 @@ WORKDIR /app
 USER root
 RUN gradle build
 
-FROM openjdk:17
+FROM gradle:9.1.0-jdk17-alpine
 ARG JAR_FILE=build/libs/*.jar
 
 RUN mkdir /app
