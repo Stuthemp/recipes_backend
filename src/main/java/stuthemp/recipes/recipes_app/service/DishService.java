@@ -3,7 +3,6 @@ package stuthemp.recipes.recipes_app.service;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import stuthemp.recipes.recipes_app.dto.request.search.DishSearchDto;
@@ -17,8 +16,6 @@ import stuthemp.recipes.recipes_app.repository.DishRepository;
 import stuthemp.recipes.recipes_app.repository.IngredientRepository;
 import stuthemp.recipes.recipes_app.dto.request.creation.DishCreationDto;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -104,9 +101,7 @@ public class DishService {
     public Iterable<Dish> findAll(DishSearchDto dishSearchDto) {
         try {
             StringBuilder sb = new StringBuilder(
-                    "SELECT d.id, d.name, d.url, d.instruction, d.cooking_time, " +
-                            "d.preparation_needed, d.is_expensive, d.has_meat, d.has_seafood, " +
-                            "d.is_spicy, d.is_sour, d.is_sweet, d.is_soup, d.is_dietary, d.is_fat " +
+                    "SELECT distinct d.id " +
                             "FROM dishes d "
             );
             sb.append("JOIN dish_ingredients di ON d.id = di.dish_id ");
