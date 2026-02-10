@@ -262,8 +262,7 @@ public class DishService {
             }
 
             log.info("Searching: " + sb.toString());
-            List<Dish> dishes = findAllDishes((sb.toString()));
-            List<Long> ids = dishes.stream().map(Dish::getId).toList();
+            List<Long> ids = findAllDishes((sb.toString()));
 
             return dishRepository.findAllById(ids);
         } catch (Exception e) {
@@ -272,29 +271,8 @@ public class DishService {
         }
     }
 
-    private List<Dish> findAllDishes(String sql) {
-        return jdbcTemplate.query(sql, new RowMapper<Dish>() {
-            @Override
-            public Dish mapRow(ResultSet rs, int rowNum) throws SQLException {
-                Dish dish = new Dish();
-                dish.setId(rs.getLong("id"));
-                dish.setName(rs.getString("name"));
-                dish.setUrl(rs.getString("url"));
-                dish.setInstruction(rs.getString("instruction"));
-                dish.setTime(rs.getInt("cooking_time"));
-                dish.setPreparationNeeded(rs.getBoolean("preparation_needed"));
-                dish.setIsExpensive(rs.getBoolean("is_expensive"));
-                dish.setIsMeaty(rs.getBoolean("has_meat"));
-                dish.setIsSeafood(rs.getBoolean("has_seafood"));
-                dish.setIsSpicy(rs.getBoolean("is_spicy"));
-                dish.setIsSour(rs.getBoolean("is_sour"));
-                dish.setIsSweet(rs.getBoolean("is_sweet"));
-                dish.setIsSoup(rs.getBoolean("is_soup"));
-                dish.setIsDietary(rs.getBoolean("is_dietary"));
-                dish.setIsFat(rs.getBoolean("is_fat"));
-                return dish;
-            }
-        });
+    private List<Long> findAllDishes(String sql) {
+       return jdbcTemplate.queryForList(sql, Long.class);
     }
 
     public static Set<String> findMissingIngredientNames(Set<Ingredient> ingredients, Set<String> names) {

@@ -78,4 +78,28 @@ public class Dish {
             joinColumns = @JoinColumn(name = "dish_id"),
             inverseJoinColumns = @JoinColumn(name = "cook_process_id"))
     private Set<CookProcess> cookProcess;
+
+    @Override
+    public String toString() {
+        return "Dish{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", url='" + url + '\'' +
+                ", instruction='" + instruction + '\'' +
+                ", time=" + time +
+                ", preparationNeeded=" + preparationNeeded +
+                ", isExpensive=" + isExpensive +
+                ", isMeaty=" + isMeaty +
+                ", isSeafood=" + isSeafood +
+                ", isSpicy=" + isSpicy +
+                ", isSour=" + isSour +
+                ", isSweet=" + isSweet +
+                ", isSoup=" + isSoup +
+                ", isDietary=" + isDietary +
+                ", isFat=" + isFat +
+                ", ingredients=" + ingredients +
+                ", cuisines=" + cuisines +
+                ", cookProcess=" + cookProcess +
+                '}';
+    }
 }
