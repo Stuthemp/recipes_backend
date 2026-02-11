@@ -1,0 +1,234 @@
+Attaching to backend-app, frontend-app, nginx-1, recipesdb
+frontend-app  | /docker-entrypoint.sh: /docker-entrypoint.d/ is not empty, will attempt to perform configuration
+frontend-app  | /docker-entrypoint.sh: Looking for shell scripts in /docker-entrypoint.d/
+frontend-app  | /docker-entrypoint.sh: Launching /docker-entrypoint.d/10-listen-on-ipv6-by-default.sh
+frontend-app  | 10-listen-on-ipv6-by-default.sh: info: IPv6 listen already enabled
+frontend-app  | /docker-entrypoint.sh: Sourcing /docker-entrypoint.d/15-local-resolvers.envsh
+frontend-app  | /docker-entrypoint.sh: Launching /docker-entrypoint.d/20-envsubst-on-templates.sh
+frontend-app  | /docker-entrypoint.sh: Launching /docker-entrypoint.d/30-tune-worker-processes.sh
+frontend-app  | /docker-entrypoint.sh: Configuration complete; ready for start up
+frontend-app  | 2026/02/11 20:33:49 [notice] 1#1: using the "epoll" event method
+frontend-app  | 2026/02/11 20:33:49 [notice] 1#1: nginx/1.28.0
+frontend-app  | 2026/02/11 20:33:49 [notice] 1#1: built by gcc 14.2.0 (Alpine 14.2.0) 
+frontend-app  | 2026/02/11 20:33:49 [notice] 1#1: OS: Linux 6.8.0-94-generic
+frontend-app  | 2026/02/11 20:33:49 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+frontend-app  | 2026/02/11 20:33:49 [notice] 1#1: start worker processes
+frontend-app  | 2026/02/11 20:33:49 [notice] 1#1: start worker process 22
+recipesdb     | 
+recipesdb     | PostgreSQL Database directory appears to contain a database; Skipping initialization
+recipesdb     | 
+recipesdb     | 2026-02-11 20:33:49.927 UTC [1] LOG:  starting PostgreSQL 18.0 (Debian 18.0-1.pgdg13+3) on x86_64-pc-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit
+recipesdb     | 2026-02-11 20:33:49.927 UTC [1] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+recipesdb     | 2026-02-11 20:33:49.930 UTC [1] LOG:  listening on IPv6 address "::", port 5432
+recipesdb     | 2026-02-11 20:33:49.939 UTC [1] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+recipesdb     | 2026-02-11 20:33:49.974 UTC [30] LOG:  database system was shut down at 2026-02-11 20:31:33 UTC
+recipesdb     | 2026-02-11 20:33:49.993 UTC [1] LOG:  database system is ready to accept connections
+nginx-1       | /docker-entrypoint.sh: /docker-entrypoint.d/ is not empty, will attempt to perform configuration
+nginx-1       | /docker-entrypoint.sh: Looking for shell scripts in /docker-entrypoint.d/
+nginx-1       | /docker-entrypoint.sh: Launching /docker-entrypoint.d/10-listen-on-ipv6-by-default.sh
+nginx-1       | 10-listen-on-ipv6-by-default.sh: info: IPv6 listen already enabled
+nginx-1       | /docker-entrypoint.sh: Sourcing /docker-entrypoint.d/15-local-resolvers.envsh
+nginx-1       | /docker-entrypoint.sh: Launching /docker-entrypoint.d/20-envsubst-on-templates.sh
+nginx-1       | /docker-entrypoint.sh: Launching /docker-entrypoint.d/30-tune-worker-processes.sh
+nginx-1       | /docker-entrypoint.sh: Configuration complete; ready for start up
+backend-app   | Standard Commons Logging discovery in action with spring-jcl: please remove commons-logging.jar from classpath in order to avoid potential conflicts
+backend-app   | 
+backend-app   |   .   ____          _            __ _ _
+backend-app   |  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+backend-app   | ( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+backend-app   |  \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+backend-app   |   '  |____| .__|_| |_|_| |_\__, | / / / /
+backend-app   |  =========|_|==============|___/=/_/_/_/
+backend-app   | 
+backend-app   |  :: Spring Boot ::                (v3.4.4)
+backend-app   | 
+backend-app   | 2026-02-11T20:33:53.300Z  INFO 1 --- [recipes_app] [           main] s.r.recipes_app.RecipesAppApplication    : Starting RecipesAppApplication v0.0.1-SNAPSHOT using Java 17.0.16 with PID 1 (/app/application.jar started by root in /app)
+backend-app   | 2026-02-11T20:33:53.309Z  INFO 1 --- [recipes_app] [           main] s.r.recipes_app.RecipesAppApplication    : The following 1 profile is active: "prod"
+backend-app   | 2026-02-11T20:33:56.789Z  INFO 1 --- [recipes_app] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+backend-app   | 2026-02-11T20:33:56.995Z  INFO 1 --- [recipes_app] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 179 ms. Found 5 JPA repository interfaces.
+backend-app   | 2026-02-11T20:33:59.204Z  INFO 1 --- [recipes_app] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8070 (http)
+backend-app   | 2026-02-11T20:33:59.238Z  INFO 1 --- [recipes_app] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+backend-app   | 2026-02-11T20:33:59.239Z  INFO 1 --- [recipes_app] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.39]
+backend-app   | 2026-02-11T20:33:59.570Z  INFO 1 --- [recipes_app] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+backend-app   | 2026-02-11T20:33:59.576Z  INFO 1 --- [recipes_app] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 6114 ms
+backend-app   | Standard Commons Logging discovery in action with spring-jcl: please remove commons-logging.jar from classpath in order to avoid potential conflicts
+backend-app   | 2026-02-11T20:34:00.059Z DEBUG 1 --- [recipes_app] [           main] o.s.c.e.PropertySourcesPropertyResolver  : Found key 'jwt.secret' in PropertySource 'environmentProperties' with value of type String
+backend-app   | 2026-02-11T20:34:00.064Z DEBUG 1 --- [recipes_app] [           main] o.s.c.e.PropertySourcesPropertyResolver  : Found key 'jwt.expiration' in PropertySource 'environmentProperties' with value of type String
+backend-app   | 2026-02-11T20:34:00.283Z  INFO 1 --- [recipes_app] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+recipesdb     | 2026-02-11 20:34:00.636 UTC [34] FATAL:  password authentication failed for user "postgres"
+recipesdb     | 2026-02-11 20:34:00.636 UTC [34] DETAIL:  Role "postgres" does not exist.
+recipesdb     | 	Connection matched file "/var/lib/postgresql/18/docker/pg_hba.conf" line 128: "host all all all scram-sha-256"
+backend-app   | 2026-02-11T20:34:01.658Z ERROR 1 --- [recipes_app] [           main] o.s.b.web.embedded.tomcat.TomcatStarter  : Error starting Tomcat context. Exception: org.springframework.beans.factory.UnsatisfiedDependencyException. Message: Error creating bean with name 'jwtAuthenticationFilter': Unsatisfied dependency expressed through field 'userRepository': Error creating bean with name 'userRepository' defined in stuthemp.recipes.recipes_app.repository.UserRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Cannot resolve reference to bean 'jpaSharedEM_entityManagerFactory' while setting bean property 'entityManager'
+backend-app   | 2026-02-11T20:34:01.751Z  INFO 1 --- [recipes_app] [           main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+backend-app   | 2026-02-11T20:34:01.764Z  WARN 1 --- [recipes_app] [           main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Unable to start web server
+backend-app   | 2026-02-11T20:34:01.806Z  INFO 1 --- [recipes_app] [           main] .s.b.a.l.ConditionEvaluationReportLogger : 
+backend-app   | 
+backend-app   | Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+backend-app   | 2026-02-11T20:34:01.851Z ERROR 1 --- [recipes_app] [           main] o.s.boot.SpringApplication               : Application run failed
+backend-app   | 
+backend-app   | org.springframework.context.ApplicationContextException: Unable to start web server
+backend-app   | 	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.onRefresh(ServletWebServerApplicationContext.java:170) ~[spring-boot-3.4.4.jar!/:3.4.4]
+backend-app   | 	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:621) ~[spring-context-6.2.5.jar!/:6.2.5]
+backend-app   | 	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.4.4.jar!/:3.4.4]
+backend-app   | 	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:752) ~[spring-boot-3.4.4.jar!/:3.4.4]
+backend-app   | 	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439) ~[spring-boot-3.4.4.jar!/:3.4.4]
+backend-app   | 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318) ~[spring-boot-3.4.4.jar!/:3.4.4]
+backend-app   | 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361) ~[spring-boot-3.4.4.jar!/:3.4.4]
+backend-app   | 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350) ~[spring-boot-3.4.4.jar!/:3.4.4]
+backend-app   | 	at stuthemp.recipes.recipes_app.RecipesAppApplication.main(RecipesAppApplication.java:14) ~[!/:0.0.1-SNAPSHOT]
+backend-app   | 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+backend-app   | 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+backend-app   | 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+backend-app   | 	at java.base/java.lang.reflect.Method.invoke(Method.java:569) ~[na:na]
+backend-app   | 	at org.springframework.boot.loader.launch.Launcher.launch(Launcher.java:102) ~[application.jar:0.0.1-SNAPSHOT]
+backend-app   | 	at org.springframework.boot.loader.launch.Launcher.launch(Launcher.java:64) ~[application.jar:0.0.1-SNAPSHOT]
+backend-app   | 	at org.springframework.boot.loader.launch.JarLauncher.main(JarLauncher.java:40) ~[application.jar:0.0.1-SNAPSHOT]
+backend-app   | Caused by: org.springframework.boot.web.server.WebServerException: Unable to start embedded Tomcat
+backend-app   | 	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize(TomcatWebServer.java:147) ~[spring-boot-3.4.4.jar!/:3.4.4]
+backend-app   | 	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.<init>(TomcatWebServer.java:107) ~[spring-boot-3.4.4.jar!/:3.4.4]
+backend-app   | 	at org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory.getTomcatWebServer(TomcatServletWebServerFactory.java:517) ~[spring-boot-3.4.4.jar!/:3.4.4]
+backend-app   | 	at org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory.getWebServer(TomcatServletWebServerFactory.java:219) ~[spring-boot-3.4.4.jar!/:3.4.4]
+backend-app   | 	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.createWebServer(ServletWebServerApplicationContext.java:193) ~[spring-boot-3.4.4.jar!/:3.4.4]
+backend-app   | 	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.onRefresh(ServletWebServerApplicationContext.java:167) ~[spring-boot-3.4.4.jar!/:3.4.4]
+backend-app   | 	... 15 common frames omitted
+backend-app   | Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'jwtAuthenticationFilter': Unsatisfied dependency expressed through field 'userRepository': Error creating bean with name 'userRepository' defined in stuthemp.recipes.recipes_app.repository.UserRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Cannot resolve reference to bean 'jpaSharedEM_entityManagerFactory' while setting bean property 'entityManager'
+backend-app   | 	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:788) ~[spring-beans-6.2.5.jar!/:6.2.5]
+backend-app   | 	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:768) ~[spring-beans-6.2.5.jar!/:6.2.5]
+backend-app   | 	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:146) ~[spring-beans-6.2.5.jar!/:6.2.5]
+backend-app   | 	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:509) ~[spring-beans-6.2.5.jar!/:6.2.5]
+backend-app   | 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1445) ~[spring-beans-6.2.5.jar!/:6.2.5]
+backend-app   | 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600) ~[spring-beans-6.2.5.jar!/:6.2.5]
+backend-app   | 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:523) ~[spring-beans-6.2.5.jar!/:6.2.5]
+backend-app   | 	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339) ~[spring-beans-6.2.5.jar!/:6.2.5]
+backend-app   | 	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:347) ~[spring-beans-6.2.5.jar!/:6.2.5]
+backend-app   | 	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337) ~[spring-beans-6.2.5.jar!/:6.2.5]
+backend-app   | 	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:207) ~[spring-beans-6.2.5.jar!/:6.2.5]
+backend-app   | 	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.getOrderedBeansOfType(ServletContextInitializerBeans.java:211) ~[spring-boot-3.4.4.jar!/:3.4.4]
+backend-app   | 	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAsRegistrationBean(ServletContextInitializerBeans.java:174) ~[spring-boot-3.4.4.jar!/:3.4.4]
+backend-app   | 	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAsRegistrationBean(ServletContextInitializerBeans.java:169) ~[spring-boot-3.4.4.jar!/:3.4.4]
+backend-app   | 	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAdaptableBeans(ServletContextInitializerBeans.java:154) ~[spring-boot-3.4.4.jar!/:3.4.4]
+backend-app   | 	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.<init>(ServletContextInitializerBeans.java:87) ~[spring-boot-3.4.4.jar!/:3.4.4]
+backend-app   | 	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.getServletContextInitializerBeans(ServletWebServerApplicationContext.java:271) ~[spring-boot-3.4.4.jar!/:3.4.4]
+backend-app   | 	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.selfInitialize(ServletWebServerApplicationContext.java:245) ~[spring-boot-3.4.4.jar!/:3.4.4]
+backend-app   | 	at org.springframework.boot.web.embedded.tomcat.TomcatStarter.onStartup(TomcatStarter.java:52) ~[spring-boot-3.4.4.jar!/:3.4.4]
+backend-app   | 	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:4467) ~[tomcat-embed-core-10.1.39.jar!/:na]
+backend-app   | 	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164) ~[tomcat-embed-core-10.1.39.jar!/:na]
+backend-app   | 	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1203) ~[tomcat-embed-core-10.1.39.jar!/:na]
+backend-app   | 	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1193) ~[tomcat-embed-core-10.1.39.jar!/:na]
+backend-app   | 	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264) ~[na:na]
+backend-app   | 	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:75) ~[tomcat-embed-core-10.1.39.jar!/:na]
+backend-app   | 	at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:145) ~[na:na]
+backend-app   | 	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:749) ~[tomcat-embed-core-10.1.39.jar!/:na]
+backend-app   | 	at org.apache.catalina.core.StandardHost.startInternal(StandardHost.java:772) ~[tomcat-embed-core-10.1.39.jar!/:na]
+backend-app   | 	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164) ~[tomcat-embed-core-10.1.39.jar!/:na]
+backend-app   | 	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1203) ~[tomcat-embed-core-10.1.39.jar!/:na]
+backend-app   | 	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1193) ~[tomcat-embed-core-10.1.39.jar!/:na]
+backend-app   | 	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264) ~[na:na]
+backend-app   | 	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:75) ~[tomcat-embed-core-10.1.39.jar!/:na]
+backend-app   | 	at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:145) ~[na:na]
+backend-app   | 	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:749) ~[tomcat-embed-core-10.1.39.jar!/:na]
+backend-app   | 	at org.apache.catalina.core.StandardEngine.startInternal(StandardEngine.java:203) ~[tomcat-embed-core-10.1.39.jar!/:na]
+backend-app   | 	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164) ~[tomcat-embed-core-10.1.39.jar!/:na]
+backend-app   | 	at org.apache.catalina.core.StandardService.startInternal(StandardService.java:415) ~[tomcat-embed-core-10.1.39.jar!/:na]
+backend-app   | 	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164) ~[tomcat-embed-core-10.1.39.jar!/:na]
+backend-app   | 	at org.apache.catalina.core.StandardServer.startInternal(StandardServer.java:870) ~[tomcat-embed-core-10.1.39.jar!/:na]
+backend-app   | 	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164) ~[tomcat-embed-core-10.1.39.jar!/:na]
+backend-app   | 	at org.apache.catalina.startup.Tomcat.start(Tomcat.java:437) ~[tomcat-embed-core-10.1.39.jar!/:na]
+backend-app   | 	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize(TomcatWebServer.java:128) ~[spring-boot-3.4.4.jar!/:3.4.4]
+backend-app   | 	... 20 common frames omitted
+backend-app   | Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'userRepository' defined in stuthemp.recipes.recipes_app.repository.UserRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Cannot resolve reference to bean 'jpaSharedEM_entityManagerFactory' while setting bean property 'entityManager'
+backend-app   | 	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveReference(BeanDefinitionValueResolver.java:377) ~[spring-beans-6.2.5.jar!/:6.2.5]
+backend-app   | 	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveValueIfNecessary(BeanDefinitionValueResolver.java:135) ~[spring-beans-6.2.5.jar!/:6.2.5]
+backend-app   | 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyPropertyValues(AbstractAutowireCapableBeanFactory.java:1711) ~[spring-beans-6.2.5.jar!/:6.2.5]
+backend-app   | 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1460) ~[spring-beans-6.2.5.jar!/:6.2.5]
+backend-app   | 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600) ~[spring-beans-6.2.5.jar!/:6.2.5]
+backend-app   | 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:523) ~[spring-beans-6.2.5.jar!/:6.2.5]
+backend-app   | 	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339) ~[spring-beans-6.2.5.jar!/:6.2.5]
+backend-app   | 	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:347) ~[spring-beans-6.2.5.jar!/:6.2.5]
+backend-app   | 	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337) ~[spring-beans-6.2.5.jar!/:6.2.5]
+backend-app   | 	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) ~[spring-beans-6.2.5.jar!/:6.2.5]
+backend-app   | 	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1609) ~[spring-beans-6.2.5.jar!/:6.2.5]
+backend-app   | 	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1555) ~[spring-beans-6.2.5.jar!/:6.2.5]
+backend-app   | 	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:785) ~[spring-beans-6.2.5.jar!/:6.2.5]
+backend-app   | 	... 62 common frames omitted
+backend-app   | Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'jpaSharedEM_entityManagerFactory': Cannot resolve reference to bean 'entityManagerFactory' while setting constructor argument
+backend-app   | 	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveReference(BeanDefinitionValueResolver.java:377) ~[spring-beans-6.2.5.jar!/:6.2.5]
+backend-app   | 	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveValueIfNecessary(BeanDefinitionValueResolver.java:135) ~[spring-beans-6.2.5.jar!/:6.2.5]
+backend-app   | 	at org.springframework.beans.factory.support.ConstructorResolver.resolveConstructorArguments(ConstructorResolver.java:691) ~[spring-beans-6.2.5.jar!/:6.2.5]
+backend-app   | 	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:513) ~[spring-beans-6.2.5.jar!/:6.2.5]
+backend-app   | 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1361) ~[spring-beans-6.2.5.jar!/:6.2.5]
+backend-app   | 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1191) ~[spring-beans-6.2.5.jar!/:6.2.5]
+backend-app   | 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:563) ~[spring-beans-6.2.5.jar!/:6.2.5]
+backend-app   | 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:523) ~[spring-beans-6.2.5.jar!/:6.2.5]
+backend-app   | 	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339) ~[spring-beans-6.2.5.jar!/:6.2.5]
+backend-app   | 	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:347) ~[spring-beans-6.2.5.jar!/:6.2.5]
+backend-app   | 	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337) ~[spring-beans-6.2.5.jar!/:6.2.5]
+backend-app   | 	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) ~[spring-beans-6.2.5.jar!/:6.2.5]
+backend-app   | 	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveReference(BeanDefinitionValueResolver.java:365) ~[spring-beans-6.2.5.jar!/:6.2.5]
+backend-app   | 	... 74 common frames omitted
+backend-app   | Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'batchDataSourceInitializer' defined in class path resource [org/springframework/boot/autoconfigure/batch/BatchAutoConfiguration$DataSourceInitializerConfiguration.class]: Failed to instantiate [org.springframework.boot.autoconfigure.batch.BatchDataSourceScriptDatabaseInitializer]: Factory method 'batchDataSourceInitializer' threw exception with message: Failed to determine DatabaseDriver
+backend-app   | 	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:657) ~[spring-beans-6.2.5.jar!/:6.2.5]
+backend-app   | 	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:645) ~[spring-beans-6.2.5.jar!/:6.2.5]
+backend-app   | 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1361) ~[spring-beans-6.2.5.jar!/:6.2.5]
+backend-app   | 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1191) ~[spring-beans-6.2.5.jar!/:6.2.5]
+backend-app   | 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:563) ~[spring-beans-6.2.5.jar!/:6.2.5]
+backend-app   | 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:523) ~[spring-beans-6.2.5.jar!/:6.2.5]
+backend-app   | 	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339) ~[spring-beans-6.2.5.jar!/:6.2.5]
+backend-app   | 	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:347) ~[spring-beans-6.2.5.jar!/:6.2.5]
+backend-app   | 	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337) ~[spring-beans-6.2.5.jar!/:6.2.5]
+backend-app   | 	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) ~[spring-beans-6.2.5.jar!/:6.2.5]
+backend-app   | 	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:315) ~[spring-beans-6.2.5.jar!/:6.2.5]
+backend-app   | 	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) ~[spring-beans-6.2.5.jar!/:6.2.5]
+backend-app   | 	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveReference(BeanDefinitionValueResolver.java:365) ~[spring-beans-6.2.5.jar!/:6.2.5]
+backend-app   | 	... 86 common frames omitted
+backend-app   | Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.boot.autoconfigure.batch.BatchDataSourceScriptDatabaseInitializer]: Factory method 'batchDataSourceInitializer' threw exception with message: Failed to determine DatabaseDriver
+backend-app   | 	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.lambda$instantiate$0(SimpleInstantiationStrategy.java:199) ~[spring-beans-6.2.5.jar!/:6.2.5]
+backend-app   | 	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiateWithFactoryMethod(SimpleInstantiationStrategy.java:88) ~[spring-beans-6.2.5.jar!/:6.2.5]
+backend-app   | 	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:168) ~[spring-beans-6.2.5.jar!/:6.2.5]
+backend-app   | 	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:653) ~[spring-beans-6.2.5.jar!/:6.2.5]
+backend-app   | 	... 98 common frames omitted
+backend-app   | Caused by: java.lang.IllegalStateException: Failed to determine DatabaseDriver
+backend-app   | 	at org.springframework.boot.jdbc.init.PlatformPlaceholderDatabaseDriverResolver.getDatabaseDriver(PlatformPlaceholderDatabaseDriverResolver.java:144) ~[spring-boot-3.4.4.jar!/:3.4.4]
+backend-app   | 	at org.springframework.boot.jdbc.init.PlatformPlaceholderDatabaseDriverResolver.determinePlatform(PlatformPlaceholderDatabaseDriverResolver.java:132) ~[spring-boot-3.4.4.jar!/:3.4.4]
+backend-app   | 	at org.springframework.boot.jdbc.init.PlatformPlaceholderDatabaseDriverResolver.lambda$resolveAll$0(PlatformPlaceholderDatabaseDriverResolver.java:97) ~[spring-boot-3.4.4.jar!/:3.4.4]
+backend-app   | 	at org.springframework.boot.jdbc.init.PlatformPlaceholderDatabaseDriverResolver.resolveAll(PlatformPlaceholderDatabaseDriverResolver.java:122) ~[spring-boot-3.4.4.jar!/:3.4.4]
+backend-app   | 	at org.springframework.boot.jdbc.init.PlatformPlaceholderDatabaseDriverResolver.resolveAll(PlatformPlaceholderDatabaseDriverResolver.java:97) ~[spring-boot-3.4.4.jar!/:3.4.4]
+backend-app   | 	at org.springframework.boot.autoconfigure.batch.BatchDataSourceScriptDatabaseInitializer.resolveSchemaLocations(BatchDataSourceScriptDatabaseInitializer.java:83) ~[spring-boot-autoconfigure-3.4.4.jar!/:3.4.4]
+backend-app   | 	at org.springframework.boot.autoconfigure.batch.BatchDataSourceScriptDatabaseInitializer.getSettings(BatchDataSourceScriptDatabaseInitializer.java:72) ~[spring-boot-autoconfigure-3.4.4.jar!/:3.4.4]
+backend-app   | 	at org.springframework.boot.autoconfigure.batch.BatchDataSourceScriptDatabaseInitializer.<init>(BatchDataSourceScriptDatabaseInitializer.java:47) ~[spring-boot-autoconfigure-3.4.4.jar!/:3.4.4]
+backend-app   | 	at org.springframework.boot.autoconfigure.batch.BatchAutoConfiguration$DataSourceInitializerConfiguration.batchDataSourceInitializer(BatchAutoConfiguration.java:180) ~[spring-boot-autoconfigure-3.4.4.jar!/:3.4.4]
+backend-app   | 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+backend-app   | 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+backend-app   | 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+backend-app   | 	at java.base/java.lang.reflect.Method.invoke(Method.java:569) ~[na:na]
+backend-app   | 	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.lambda$instantiate$0(SimpleInstantiationStrategy.java:171) ~[spring-beans-6.2.5.jar!/:6.2.5]
+backend-app   | 	... 101 common frames omitted
+backend-app   | Caused by: org.springframework.jdbc.support.MetaDataAccessException: Could not get Connection for extracting meta-data
+backend-app   | 	at org.springframework.jdbc.support.JdbcUtils.extractDatabaseMetaData(JdbcUtils.java:357) ~[spring-jdbc-6.2.5.jar!/:6.2.5]
+backend-app   | 	at org.springframework.boot.jdbc.init.PlatformPlaceholderDatabaseDriverResolver.getDatabaseDriver(PlatformPlaceholderDatabaseDriverResolver.java:140) ~[spring-boot-3.4.4.jar!/:3.4.4]
+backend-app   | 	... 114 common frames omitted
+backend-app   | Caused by: org.springframework.jdbc.CannotGetJdbcConnectionException: Failed to obtain JDBC Connection
+backend-app   | 	at org.springframework.jdbc.datasource.DataSourceUtils.getConnection(DataSourceUtils.java:84) ~[spring-jdbc-6.2.5.jar!/:6.2.5]
+backend-app   | 	at org.springframework.jdbc.support.JdbcUtils.extractDatabaseMetaData(JdbcUtils.java:331) ~[spring-jdbc-6.2.5.jar!/:6.2.5]
+backend-app   | 	... 115 common frames omitted
+backend-app   | Caused by: org.postgresql.util.PSQLException: FATAL: password authentication failed for user "postgres"
+backend-app   | 	at org.postgresql.core.v3.ConnectionFactoryImpl.doAuthentication(ConnectionFactoryImpl.java:693) ~[postgresql-42.6.1.jar!/:42.6.1]
+backend-app   | 	at org.postgresql.core.v3.ConnectionFactoryImpl.tryConnect(ConnectionFactoryImpl.java:203) ~[postgresql-42.6.1.jar!/:42.6.1]
+backend-app   | 	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:258) ~[postgresql-42.6.1.jar!/:42.6.1]
+backend-app   | 	at org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:54) ~[postgresql-42.6.1.jar!/:42.6.1]
+backend-app   | 	at org.postgresql.jdbc.PgConnection.<init>(PgConnection.java:263) ~[postgresql-42.6.1.jar!/:42.6.1]
+backend-app   | 	at org.postgresql.Driver.makeConnection(Driver.java:443) ~[postgresql-42.6.1.jar!/:42.6.1]
+backend-app   | 	at org.postgresql.Driver.connect(Driver.java:297) ~[postgresql-42.6.1.jar!/:42.6.1]
+backend-app   | 	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:137) ~[HikariCP-5.1.0.jar!/:na]
+backend-app   | 	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:360) ~[HikariCP-5.1.0.jar!/:na]
+backend-app   | 	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:202) ~[HikariCP-5.1.0.jar!/:na]
+backend-app   | 	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:461) ~[HikariCP-5.1.0.jar!/:na]
+backend-app   | 	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:550) ~[HikariCP-5.1.0.jar!/:na]
+backend-app   | 	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:98) ~[HikariCP-5.1.0.jar!/:na]
+backend-app   | 	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:111) ~[HikariCP-5.1.0.jar!/:na]
+backend-app   | 	at org.springframework.jdbc.datasource.DataSourceUtils.fetchConnection(DataSourceUtils.java:160) ~[spring-jdbc-6.2.5.jar!/:6.2.5]
+backend-app   | 	at org.springframework.jdbc.datasource.DataSourceUtils.doGetConnection(DataSourceUtils.java:118) ~[spring-jdbc-6.2.5.jar!/:6.2.5]
+backend-app   | 	at org.springframework.jdbc.datasource.DataSourceUtils.getConnection(DataSourceUtils.java:81) ~[spring-jdbc-6.2.5.jar!/:6.2.5]
+backend-app   | 	... 116 common frames omitted
+backend-app   | 
+[Kbackend-app exited with code 1
