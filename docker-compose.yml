@@ -24,7 +24,7 @@ services:
       - frontend
     networks:
       - dev
-  
+
   backend:
     image: backend-image
     container_name: backend-app
@@ -65,7 +65,7 @@ services:
     networks:
       - dev
     volumes:
-      - loki_/data/loki
+      - loki_data:/data/loki
 
   grafana:
     image: grafana/grafana:10.1.5
@@ -78,7 +78,7 @@ services:
       - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_PWD}
       - GF_USERS_ALLOW_SIGN_UP=false
     volumes:
-      - grafana_/var/lib/grafana
+      - grafana_data:/var/lib/grafana
     depends_on:
       - loki
 
@@ -96,5 +96,5 @@ services:
       - loki
 
 volumes:
-  loki_
-  grafana_
+  loki_data:
+  grafana_data:
