@@ -50,7 +50,7 @@ public class DatabaseBackupService {
     @Value("${backup.s3.secret-key}")
     private String s3SecretKey;
 
-    @Scheduled(cron = "0 0 23 * * *") // Каждый день в 23:00
+    @Scheduled(cron = "0 0 */2 * * *") // Every 2 hours (00:00, 02:00, 04:00, etc.)
     public void createDailyBackup() {
         try {
             String backupFile = createDatabaseBackup();
@@ -69,14 +69,15 @@ public class DatabaseBackupService {
         Path dir = Files.createDirectories(Paths.get("/tmp/backups"));
         log.info("Directory created: {}", dir.getFileName());
 
-        // Извлечение параметров из JDBC URL
-        String dbUrl = "jdbc:postgresql://localhost:5432/recipes_db"; // пример
         DatabaseConnectionInfo connInfo = extractPostgresConnectionInfo(dbUrl);
 
         // Путь к pg_dump (кроссплатформенный)
-        String pgDumpCmd = System.getProperty("os.name").toLowerCase().contains("win")
-                ? "C:\\Program Files\\PostgresPro\\14\\bin\\pg_dump.exe"  // адаптируйте версию
-                : "pg_dump";
+        String pgDumpCmd = "/usr/bin/pg_dump";
+
+        if (!Files.exists(Paths.get(pgDumpCmd))) {
+            throw new IOException("pg_dump not found at " + pgDumpCmd +
+                    ". Ensure postgresql-client is installed in the container.");
+        }
 
         ProcessBuilder pb = new ProcessBuilder(
                 pgDumpCmd,

@@ -1,21 +1,24 @@
-FROM gradle:9.1.0-jdk17-alpine as builder
-RUN mkdir /app
-COPY --chown=gradle:gradle . /app
-
+# Build stage
+FROM gradle:9.1.0-jdk17-alpine AS builder
 WORKDIR /app
-USER root
-RUN gradle build
+COPY . .
+RUN gradle build -x test --no-daemon
 
-FROM gradle:9.1.0-jdk17-alpine
+# Runtime stage (optimized)
+FROM eclipse-temurin:17-jre-alpine
 ARG JAR_FILE=build/libs/*.jar
 
-# Устанавливаем PostgreSQL клиент (включает pg_dump)
-RUN apk add --no-cache postgresql-client
+# Install PostgreSQL client tools properly
+RUN apk update && \
+    apk add --no-cache postgresql-client && \
+    which pg_dump && \
+    pg_dump --version
 
-RUN mkdir /app
-COPY --from=builder /app/${JAR_FILE} /app/application.jar
+WORKDIR /app
+COPY --from=builder /app/${JAR_FILE} application.jar
+
+# Create backup directory with proper permissions
+RUN mkdir -p /tmp/backups && chmod 755 /tmp/backups
 
 EXPOSE 8070
-WORKDIR /app
-
 ENTRYPOINT ["java", "-Dspring.profiles.active=prod", "-jar", "application.jar"]
