@@ -50,7 +50,7 @@ public class DatabaseBackupService {
     @Value("${backup.s3.secret-key}")
     private String s3SecretKey;
 
-    @Scheduled(cron = "0 0 */2 * * *") // Every 2 hours (00:00, 02:00, 04:00, etc.)
+    @Scheduled(cron = "0 0 20 * * *")
     public void createDailyBackup() {
         try {
             String backupFile = createDatabaseBackup();
