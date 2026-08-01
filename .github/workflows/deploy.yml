@@ -46,11 +46,12 @@ jobs:
           script: |
             cd /home/${{ secrets.VPS_USER }}/recipes/back
             # Находим свежий jar и переименовываем его в backend.jar
+            rm -f *-plain.jar
             mv *.jar backend.jar
             
             # Перезапускаем только контейнер бэкенда через docker-compose
             # (предполагается, что docker-compose.yml лежит в /home/.../myproject)
             cd ..
-            docker-compose restart backend
+            docker compose restart backend
             
             docker system prune -f
