@@ -2,6 +2,7 @@ package stuthemp.recipes.recipes_app.service;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,6 +16,7 @@ import stuthemp.recipes.recipes_app.repository.CuisineRepository;
 import stuthemp.recipes.recipes_app.repository.DishRepository;
 import stuthemp.recipes.recipes_app.repository.IngredientRepository;
 import stuthemp.recipes.recipes_app.dto.request.creation.DishCreationDto;
+import stuthemp.recipes.recipes_app.specifications.DishSpecifications;
 
 import java.util.List;
 import java.util.Set;
@@ -100,168 +102,12 @@ public class DishService {
     @Transactional
     public Iterable<Dish> findAll(DishSearchDto dishSearchDto) {
         try {
-            StringBuilder sb = new StringBuilder(
-                    "SELECT distinct d.id " +
-                            "FROM dishes d "
-            );
-            sb.append("JOIN dish_ingredients di ON d.id = di.dish_id ");
-            sb.append("JOIN ingredients i ON di.ingredient_id = i.id ");
-            sb.append("JOIN dish_cook_process dcp ON d.id = dcp.dish_id ");
-            sb.append("JOIN cook_processes cp ON dcp.cook_process_id = cp.id ");
-            sb.append("JOIN dish_cuisines dc ON d.id = dc.dish_id ");
-            sb.append("JOIN cuisine c ON dc.cuisine_id = c.id ");
-            sb.append("WHERE 1=1 ");
-
-            if (dishSearchDto.getIsMeaty() != null) {
-                if (dishSearchDto.getIsMeaty()) {
-                    sb.append("AND d.has_meat IS TRUE ");
-                } else {
-                    sb.append("AND d.has_meat IS FALSE ");
-                }
-            }
-
-            if (dishSearchDto.getIsExpensive() != null) {
-                if (dishSearchDto.getIsExpensive()) {
-                    sb.append("AND d.is_expensive IS TRUE ");
-                } else {
-                    sb.append("AND d.is_expensive IS FALSE ");
-                }
-            }
-
-            if (dishSearchDto.getPreparationNeeded() != null) {
-                if (dishSearchDto.getPreparationNeeded()) {
-                    sb.append("AND d.preparation_needed IS TRUE ");
-                } else {
-                    sb.append("AND d.preparation_needed IS FALSE ");
-                }
-            }
-
-            if (dishSearchDto.getIsSour() != null) {
-                if (dishSearchDto.getIsSour()) {
-                    sb.append("AND d.is_sour IS TRUE ");
-                } else {
-                    sb.append("AND d.is_sour IS FALSE ");
-                }
-            }
-
-            if (dishSearchDto.getIsSweet() != null) {
-                if (dishSearchDto.getIsSweet()) {
-                    sb.append("AND d.is_sweet IS TRUE ");
-                } else {
-                    sb.append("AND d.is_sweet IS FALSE ");
-                }
-            }
-
-            if (dishSearchDto.getIsSoup() != null) {
-                if (dishSearchDto.getIsSoup()) {
-                    sb.append("AND d.is_soup IS TRUE ");
-                } else {
-                    sb.append("AND d.is_soup IS FALSE ");
-                }
-            }
-
-            if (dishSearchDto.getIsDietary() != null) {
-                if (dishSearchDto.getIsDietary()) {
-                    sb.append("AND d.is_dietary IS TRUE ");
-                } else {
-                    sb.append("AND d.is_dietary IS FALSE ");
-                }
-            }
-
-            if (dishSearchDto.getIsFat() != null) {
-                if (dishSearchDto.getIsFat()) {
-                    sb.append("AND d.is_fat IS TRUE ");
-                } else {
-                    sb.append("AND d.is_fat IS FALSE ");
-                }
-            }
-
-            if(dishSearchDto.getTime() != null) {
-                if(dishSearchDto.getTime().getGt() != null) {
-                    sb.append("AND d.cooking_time > ").append(dishSearchDto.getTime().getGt()).append(" ");
-                }
-                if(dishSearchDto.getTime().getLt() != null) {
-                    sb.append("AND d.cooking_time < ").append(dishSearchDto.getTime().getLt()).append(" ");
-                }
-            }
-
-            if(dishSearchDto.getName() != null && !dishSearchDto.getName().trim().isEmpty()) {
-                sb.append("AND d.name LIKE '%").append(dishSearchDto.getName()).append("%' ");
-            }
-
-            if(dishSearchDto.getInstruction() != null) {
-                sb.append("AND d.instruction LIKE '%").append(dishSearchDto.getInstruction()).append("%' ");
-            }
-
-
-            if (dishSearchDto.getCuisines() != null) {
-                if (!dishSearchDto.getCuisines().getInclude().isEmpty()) {
-                    sb.append("AND c.name IN (");
-                    for (int j = 0; j < dishSearchDto.getCuisines().getInclude().size(); j++) {
-                        sb.append("'").append(dishSearchDto.getCuisines().getInclude().get(j)).append("'");
-                        if (j < dishSearchDto.getCuisines().getInclude().size() - 1) {
-                            sb.append(", ");
-                        }
-                    }
-                    sb.append(") ");
-                }
-            }
-
-
-            if(dishSearchDto.getIngredients() != null) {
-                if (!dishSearchDto.getIngredients().getInclude().isEmpty()) {
-                    sb.append("AND i.name IN (");
-                    for (int j = 0; j < dishSearchDto.getIngredients().getInclude().size(); j++) {
-                        sb.append("'").append(dishSearchDto.getIngredients().getInclude().get(j)).append("'");
-                        if (j < dishSearchDto.getIngredients().getInclude().size() - 1) {
-                            sb.append(", ");
-                        }
-                    }
-                    sb.append(") ");
-                }
-
-                if (!dishSearchDto.getIngredients().getExclude().isEmpty()) {
-                    sb.append("AND i.name NOT IN (");
-                    for (int j = 0; j < dishSearchDto.getIngredients().getExclude().size(); j++) {
-                        sb.append("'").append(dishSearchDto.getIngredients().getExclude().get(j)).append("'");
-                        if (j < dishSearchDto.getIngredients().getExclude().size() - 1) {
-                            sb.append(", ");
-                        }
-                    }
-                    sb.append(") ");
-                }
-            }
-
-            if(dishSearchDto.getCookProcess() != null) {
-                if (!dishSearchDto.getCookProcess().getInclude().isEmpty()) {
-                    sb.append("AND cp.name IN (");
-                    for (int j = 0; j < dishSearchDto.getCookProcess().getInclude().size(); j++) {
-                        sb.append("'").append(dishSearchDto.getCookProcess().getInclude().get(j)).append("'");
-                        if (j < dishSearchDto.getCookProcess().getInclude().size() - 1) {
-                            sb.append(", ");
-                        }
-                    }
-                    sb.append(") ");
-                }
-
-                if (!dishSearchDto.getCookProcess().getExclude().isEmpty()) {
-                    sb.append("AND cp.name NOT IN (");
-                    for (int j = 0; j < dishSearchDto.getCookProcess().getExclude().size(); j++) {
-                        sb.append("'").append(dishSearchDto.getCookProcess().getExclude().get(j)).append("'");
-                        if (j < dishSearchDto.getCookProcess().getExclude().size() - 1) {
-                            sb.append(", ");
-                        }
-                    }
-                    sb.append(") ");
-                }
-            }
-
-            log.info("Searching: " + sb.toString());
-            List<Long> ids = findAllDishes((sb.toString()));
-
-            return dishRepository.findAllById(ids);
+            Specification<Dish> spec = DishSpecifications.bySearchDto(dishSearchDto);
+            List<Dish> result = dishRepository.findAll(spec).stream().distinct().toList();
+            log.info("Found {} dishes matching criteria", result.size());
+            return result;
         } catch (Exception e) {
-            log.error("Error while looking for dish: " + e.getClass() + " with message " + e.getMessage());
+            log.error("Error while searching dishes: {} - {}", e.getClass(), e.getMessage());
             return List.of();
         }
     }
